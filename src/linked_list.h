@@ -34,13 +34,12 @@ public:
     void add_back(T t) {
         auto* node = new linked_node<T>;
         node->set_data(t);
+        this->last_node = node;
         if (this->last_node == nullptr) {
-            this->last_node = node;
             this->front_node = node;
         } else {
             node->set_previous(this->last_node);
             this->last_node->set_next(node);
-            this->last_node = node;
         }
         this->size++;
     }
@@ -48,13 +47,12 @@ public:
     void add_front(T t) {
         auto* node = new linked_node<T>;
         node->set_data(t);
+        this->front_node = node;
         if (this->front_node == nullptr) {
             this->last_node = node;
-            this->front_node = node;
         } else {
             node->set_next(this->front_node);
             this->front_node->set_previous(node);
-            this->front_node = node;
         }
         this->size++;
     }
